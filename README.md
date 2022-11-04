@@ -12,8 +12,12 @@ To demonstrate Agile development and deployment, project uses of AWS DevOps Tool
 ## Code structure
 This is a multi-module maven based Spring-Boot project with two microservices. Both microservices are packaged as separate modules and get built as Docker image as part of the AWS CodeBuild build stage execution.
 
-## Microservices
-"Product" microservice is external facing which calls the other internal microservice "Review". Both microservices are authenticated with Amazon Cognito User pool based authentication using OIDC - OAuth2 (JWT) mechanism.
+## Springboot Microservices
+Microservices are implemented as Springboot project along with Spring Security. 
+
+"Product" microservice is external facing which calls the other internal microservice "Review". 
+
+Both microservices are authenticated with Amazon Cognito User pool based authentication using OIDC - OAuth2 (JWT) mechanism.
 
 ## Kubernetes deployment
 The project also consists of Kubernetes deployment artifcat that defines how the Kubernetes deployment
