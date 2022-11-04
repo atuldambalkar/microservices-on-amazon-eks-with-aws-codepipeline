@@ -32,7 +32,7 @@ Create Amazon ECR Repositories for Docker images for two microservices
 
 ## Amazon Cognito
 - Create Amazon Cognito User Pool with at-least one validated user.
-- Make sure you update the application.yml () files under both Java projects (Product and Review) with the Cognito User Pool Id that you created.
+- Make sure you update the application.yml (<project_module>/src/main/resources) files under both Java project modules (Product and Review) with the Cognito User Pool Id that you created.
     - You can get the User Pool Id from Amazon Cognito Console
 
 ```yaml
