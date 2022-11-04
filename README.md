@@ -64,7 +64,7 @@ Create AWS CodeBuild project named as - "aws-samples-k8s-microservices"
     4. AWS_REGION - AWS Region e.g. ap-south-1
 
 ### IAM Role for AWS CodeBuild
-By default AWS CodeBuild will create a Role - "codebuild-aws-samples-k8s-microservices-service-role" if AWS CodeBuild Project name is "aws-samples-k8s-microservices".
+By default AWS CodeBuild will create a Service Role - "codebuild-aws-samples-k8s-microservices-service-role" if AWS CodeBuild Project name is "aws-samples-k8s-microservices".
 
 For this Role, add following permission policy through AWS command line or AWS IAM Console.
 Below permissions are needed for AWS CodeBuild to work with Amazon ECR Service and Amazon EKS cluster
@@ -92,6 +92,22 @@ Below permissions are needed for AWS CodeBuild to work with Amazon ECR Service a
     ]
 }
 ```       
+
+## Updating Kubernetes `aws-auth` ConfigMap
+1. Edit the aws-auth ConfigMap of your cluster.
+```shell
+$ kubectl -n kube-system edit configmap/aws-auth
+```  
+2. Add the AWS CodeBuild Project specific execution service role as shown below,
+```yaml
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:masters
+      rolearn: arn:aws:iam::109017375694:role/codebuild-aws-samples-k8s-microservices-service-role
+      username: codebuild-aws-samples-k8s-microservices-service-role
+```
 
 ## AWS CodePipeline
 - Create AWS CodePipeline Project with two stages
