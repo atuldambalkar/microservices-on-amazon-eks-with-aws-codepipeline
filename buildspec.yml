@@ -6,7 +6,8 @@
 # ECR_PRODUCT_REPOSITORY_URI
 # ECR_REVIEW_REPOSITORY_URI
 # EKS_CLUSTER_NAME - e.g. my-eks-cluster
-# REGION_NAME - e.g. ap-south-1
+# AWS_REGION - e.g. ap-south-1
+# ECR_REGISTRY e.g. <AWS_ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com
 
 ---
 version: 0.2
@@ -27,7 +28,7 @@ phases:
       - REVIEW_TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
       - sed -i 's@PRODUCT_CONTAINER_IMAGE@'"$ECR_PRODUCT_REPOSITORY_URI:$PRODUCT_TAG"'@' k8s-microservices-full.yaml
       - sed -i 's@REVIEW_CONTAINER_IMAGE@'"$ECR_REVIEW_REPOSITORY_URI:$REVIEW_TAG"'@' k8s-microservices-full.yaml
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 109017375694.dkr.ecr.ap-south-1.amazonaws.com
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY
       - export KUBECONFIG=$HOME/.kube/config
   build:
     commands:

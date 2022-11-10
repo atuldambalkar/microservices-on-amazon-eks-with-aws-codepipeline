@@ -62,6 +62,7 @@ Create AWS CodeBuild project named as - "aws-samples-k8s-microservices"
     2. ECR_REVIEW_REPOSITORY_URI - ECR Repository for Review Container Image
     3. EKS_CLUSTER_NAME - Name of the EKS Cluster
     4. AWS_REGION - AWS Region e.g. ap-south-1
+    5. ECR_REGISTRY - Elastic Container Registry URL for your Private Repository e.g. <AWS_ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com
 
 ### IAM Role for AWS CodeBuild
 By default AWS CodeBuild will create a Service Role - "codebuild-aws-samples-k8s-microservices-service-role" if AWS CodeBuild Project name is "aws-samples-k8s-microservices".
