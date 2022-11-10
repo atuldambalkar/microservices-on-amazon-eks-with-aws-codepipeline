@@ -20,7 +20,7 @@ Microservices are implemented as Springboot project along with Spring Security.
 Both microservices are authenticated with Amazon Cognito User pool based authentication using OIDC - OAuth2 (JWT) mechanism.
 
 ## Kubernetes deployment
-The project also consists of Kubernetes deployment artifcat that defines how the Kubernetes deployment
+The project also consists of Kubernetes deployment artifact that defines how the Kubernetes deployment
 
 Product microservice is internet facing and is exposed using Ingress controller. Product microservice invokes Review microservice which is exposed only within Kubernetes cluster using ClusterIP.
 
