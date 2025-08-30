@@ -106,7 +106,7 @@ data:
   mapRoles: |
     - groups:
       - system:masters
-      rolearn: arn:aws:iam::109017375694:role/codebuild-aws-samples-k8s-microservices-service-role
+      rolearn: arn:aws:iam::111111111:role/codebuild-aws-samples-k8s-microservices-service-role
       username: codebuild-aws-samples-k8s-microservices-service-role
 ```
 
